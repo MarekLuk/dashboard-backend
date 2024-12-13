@@ -1,0 +1,42 @@
+image:
+  name: public.ecr.aws/aws-cli/aws-cli
+
+build: &build
+  name: 🏗️ Building
+  script:
+    - AWS_ECR_REPOSITORY=${AWS_ECR_REPOSITORY:-$BITBUCKET_REPO_SLUG}
+    - echo $AWS_ECR_REPOSITORY
+    - IMAGE="${AWS_REGISTRY}/${AWS_ECR_REPOSITORY}"
+    - echo $IMAGE
+    - TAG=${BITBUCKET_TAG:-$BITBUCKET_COMMIT}
+    - echo $TAG
+    - docker build --tag $IMAGE:$TAG -f Dockerfile .
+  services:
+    - docker
+  caches:
+    - docker
+  max-time: 10        
+
+definitions:
+  services:
+    docker:
+      memory: 3072
+  steps:
+    - step: &Node
+        image: node:22.8.0-bookworm-slim
+        size: 1x
+
+pipelines:
+  default:
+    - step: &tests
+        <<: *Node
+        name: 🔬 Unit tests
+        script:
+          - npm install
+          - npm run test
+  branches:
+    develop:
+      - step:
+          <<: *tests
+      - step: 
+          <<: *build
