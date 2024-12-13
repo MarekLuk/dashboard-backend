@@ -1,0 +1,48 @@
+# Dependency directories
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directories 
+coverage/
+*.lcov
+
+# Build directory
+build/
+
+# Tests directory
+tests/
+
+# Configuration files
+.env*
+*.env
+
+# Git directories and files
+.git/
+.gitignore
+
+# Various metadata & configuration files
+*.DS_Store
+*.swp
+*.swo
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Dist files 
+dist/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Read me
+README.md
