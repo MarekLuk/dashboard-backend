@@ -35,7 +35,7 @@ This project implements a backend service for a Todo application using Node.js a
 
 ## Setup Instructions
 ### 1. Clone the Repository: 
-`git clone git@bitbucket.org:/todo-app-backend.git`
+`git clone https://github.com/MarekLuk/todo-app-backend.git`
 ### 2. Navigate into the project directory:
 `cd todo-app-backend`
 ### 3. Install Dependencies:
