@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: app
+    env: docker
+    plan: free
+    dockerfilePath: malmalmal/todo-app-backend-app:latest
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: ${PORT}
+      - key: DB_HOST
+        value: ${DB_HOST}
+      - key: DB_USER
+        value: ${DB_USER}
+      - key: DB_PASSWORD
+        value: ${DB_PASSWORD}
+      - key: DB_NAME
+        value: ${DB_NAME}
+      - key: DB_PORT
+        value: ${DB_PORT}
+      - key: NODE_ENV
+        value: ${NODE_ENV}
+      - key: DEV_ORIGIN
+        value: ${DEV_ORIGIN}
+      - key: PROD_ORIGIN
+        value: ${PROD_ORIGIN}
+      - key: JWT_SECRET
+        value: ${JWT_SECRET}
+    port: ${PORT}
+    routes:
+      - type: net/http
+        auth: false
+
+  - type: private_service
+    name: postgres
+    env: docker
+    plan: free
+    image: postgres:15-alpine
+    envVars:
+      - key: POSTGRES_USER
+        value: ${DB_USER}
+      - key: POSTGRES_PASSWORD
+        value: ${DB_PASSWORD}
+      - key: POSTGRES_DB
+        value: ${DB_NAME}
+    port: ${DB_PORT}
