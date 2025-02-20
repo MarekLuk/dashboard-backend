@@ -40,15 +40,9 @@ const logger = createLogger({
 	level: process.env.NODE_ENV === "production" ? "info" : "debug",
 	format: logFormat,
 	defaultMeta: { service: "Amazing app" },
-	transports: [
-		new transports.Console(),
-		new transports.File({
-			filename: "logs/app.log",
-			level: "info",
-		}),
-	],
-	exceptionHandlers: [new transports.File({ filename: "logs/exceptions.log" })],
-	rejectionHandlers: [new transports.File({ filename: "logs/rejections.log" })],
+	transports: loggerTransports,
+	exceptionHandlers,
+	rejectionHandlers,
 });
 
 module.exports = logger;
