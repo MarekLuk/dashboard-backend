@@ -62,3 +62,4 @@ coverage/
 # Package Managers
 package-lock.json
 
+.vercel
