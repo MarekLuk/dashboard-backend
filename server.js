@@ -3,11 +3,13 @@ const logger = require('./utils/logger');
 const app=require("./app");
 const retryMechanism=require("./utils/retryMechanism");
 require('dotenv').config();
-
 const PORT = process.env.PORT || 5000;
+
+
 
 async function startServer() {
     try {
+        
         await createDatabaseIfNotExists();
         logger.info('Connecting to the database...');
         

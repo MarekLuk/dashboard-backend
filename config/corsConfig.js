@@ -5,3 +5,4 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
     : [process.env.DEV_ORIGIN].filter(Boolean);
 
 module.exports = allowedOrigins;
+

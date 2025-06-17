@@ -57,7 +57,8 @@ router.post(
 		);
 		res.cookie("token", token, {
 			httpOnly: true,
-			secure: process.env.NODE_ENV === "production",
+			// secure: process.env.NODE_ENV === "production",
+			secure: true,
 			sameSite: "None",
 			// sameSite: "lax",
 			maxAge: 5 * 60 * 1000,
@@ -69,7 +70,8 @@ router.post(
 router.post("/logout", (req, res) => {
 	res.cookie("token", "", {
 		httpOnly: true,
-		secure: process.env.NODE_ENV === "production",
+		//secure: process.env.NODE_ENV === "production",
+		secure: true,
 		sameSite: "None",
 		expires: new Date(0),
 	});
